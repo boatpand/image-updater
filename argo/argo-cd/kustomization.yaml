@@ -1,0 +1,22 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: argo-cd
+
+helmCharts:
+  - name: argo-cd
+    includeCRDs: true
+    releaseName: argo-cd
+    namespace: argo-cd
+    version: "7.8.0"
+    repo: https://argoproj.github.io/argo-helm
+    additionalValuesFiles:
+      - ./values-argo-cd.yaml
+
+  - name: argocd-image-updater
+    includeCRDs: true
+    releaseName: argocd-image-updater
+    namespace: argo-cd
+    version: "v0.12.0"
+    repo: https://argoproj.github.io/argo-helm
+    additionalValuesFiles:
+      - ./values-argo-image-updater.yaml
