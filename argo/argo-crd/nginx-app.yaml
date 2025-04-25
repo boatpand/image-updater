@@ -6,7 +6,7 @@ metadata:
 spec:
   project: nginx
   source:
-    repoURL: git@github.com
+    repoURL: git@github.com/boatpand/image-updater.git
     path: nginx
     targetRevision: main
   syncPolicy:
