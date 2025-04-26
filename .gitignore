@@ -1,3 +1,4 @@
 **/charts/**
 .DS_Store
 **/*secrets.yaml
+**/*notification*
