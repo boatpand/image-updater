@@ -4,9 +4,9 @@ metadata:
   name: nginx
   namespace: argo-cd
   annotations:
-    argocd-image-updater.argoproj.io/image-list: nginx=docker.io/boatpand/mynginx:~1.0
+    argocd-image-updater.argoproj.io/image-list: nginx=docker.io/boatpand/mynginx:1.0.x
     argocd-image-updater.argoproj.io/nginx.update-strategy: semver
-    argocd-image-updater.argoproj.io/nginx.pull-secret: container-registry-secret
+    argocd-image-updater.argoproj.io/nginx.pull-secret: pullsecret:argo-cd/container-registry-secret
 spec:
   project: nginx
   source:
