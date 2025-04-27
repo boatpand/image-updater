@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-notifications-cm
+  namespace: argo-cd
+data:
+  context: |
+    argocdUrl: http://localhost:8001
+
+  template.image-updater: |
+    teams:
+      themeColor: "#fd8855"
+      potentialAction: |-
+        [{
+          "@type": "OpenUri",
+          "name": "ArgoCD",
+          "targets": [{
+            "os": "default",
+            "uri": "{{.context.argocdUrl}}/applications/{{.app.metadata.name}}?operation=false&resource="
+          }]
+        }]
+      sections: |
+        [{
+          "facts": [
+            {
+              "name": "Deploying Image",
+              "value": "{{.app.status.summary.images}}"
+            },
+            {
+              "name": "New Image in Container Registry",
+              "value": "{{.app.status.sync.comparedTo.source.kustomize.images}}"
+            }
+          ]
+        }]
+      title: "[{{.app.metadata.name}}] has a new version."
+      text: "Argo Image Updater found new {{.app.metadata.name}} image is pushed to container registry, Please check and sync."
+      summary: "{{.app.metadata.name}} is not up to date"
+
+  trigger.out-of-sync: |
+    - when: |
+        app.status.summary.images[0] != app.status.sync.comparedTo.source.kustomize.images[0]
+      send: [image-updater]
+    
+  service.teams: |
+    recipientUrls:
+      image-update-channel: $channel-teams-url

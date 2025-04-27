@@ -7,6 +7,8 @@ metadata:
     argocd-image-updater.argoproj.io/image-list: nginx=docker.io/boatpand/mynginx:1.0.x
     argocd-image-updater.argoproj.io/nginx.update-strategy: semver
     argocd-image-updater.argoproj.io/nginx.pull-secret: pullsecret:argo-cd/container-registry-secret
+    notifications.argoproj.io/subscribe.out-of-sync.teams: image-update-channel
+    
 spec:
   project: nginx
   source:
@@ -20,9 +22,10 @@ spec:
       - RespectIgnoreDifferences=true
       - CreateNamespace=true
       - ApplyOutOfSyncOnly=true
-    automated:
-      prune: false
-      selfHeal: false
+    # automated: 
+      # prune: false
+      # selfHeal: false
+    automated: null
 
   destination:
     server: https://kubernetes.default.svc

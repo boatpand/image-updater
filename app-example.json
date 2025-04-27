@@ -1,0 +1,216 @@
+{
+    "apiVersion": "argoproj.io/v1alpha1",
+    "kind": "Application",
+    "metadata": {
+      "annotations": {
+        "argocd-image-updater.argoproj.io/image-list": "nginx=docker.io/boatpand/mynginx:1.0.x",
+        "argocd-image-updater.argoproj.io/nginx.pull-secret": "pullsecret:argo-cd/container-registry-secret",
+        "argocd-image-updater.argoproj.io/nginx.update-strategy": "semver",
+        "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"argoproj.io/v1alpha1\",\"kind\":\"Application\",\"metadata\":{\"annotations\":{\"argocd-image-updater.argoproj.io/image-list\":\"nginx=docker.io/boatpand/mynginx:1.0.x\",\"argocd-image-updater.argoproj.io/nginx.pull-secret\":\"pullsecret:argo-cd/container-registry-secret\",\"argocd-image-updater.argoproj.io/nginx.update-strategy\":\"semver\",\"notifications.argoproj.io/subscribe.out-of-sync.teams\":\"image-update-channel\"},\"name\":\"nginx\",\"namespace\":\"argo-cd\"},\"spec\":{\"destination\":{\"namespace\":\"default\",\"server\":\"https://kubernetes.default.svc\"},\"ignoreDifferences\":[{\"group\":\"apps\",\"jsonPointers\":[\"/spec/replicas\"],\"kind\":\"\"}],\"project\":\"nginx\",\"source\":{\"path\":\"nginx\",\"repoURL\":\"git@github.com/boatpand/image-updater.git\",\"targetRevision\":\"main\"},\"syncPolicy\":{\"automated\":null,\"syncOptions\":[\"ServerSideApply=true\",\"Validate=true\",\"RespectIgnoreDifferences=true\",\"CreateNamespace=true\",\"ApplyOutOfSyncOnly=true\"]}}}",
+        "notifications.argoproj.io/subscribe.out-of-sync.teams": "image-update-channel"
+      },
+      "creationTimestamp": "2025-04-25T17:26:26Z",
+      "generation": 143,
+      "labels": {
+        "k8slens-edit-resource-version": "v1alpha1"
+      },
+      "managedFields": [],
+      "name": "nginx",
+      "namespace": "argo-cd",
+      "resourceVersion": "31712",
+      "uid": "4b44f3e5-3592-449f-9275-f93becf39aad"
+    },
+    "spec": {
+      "destination": {
+        "namespace": "default",
+        "server": "https://kubernetes.default.svc"
+      },
+      "ignoreDifferences": [
+        {
+          "group": "apps",
+          "jsonPointers": [
+            "/spec/replicas"
+          ],
+          "kind": ""
+        }
+      ],
+      "project": "nginx",
+      "source": {
+        "kustomize": {
+          "images": [
+            "docker.io/boatpand/mynginx:v1.0.2"
+          ]
+        },
+        "path": "nginx",
+        "repoURL": "git@github.com/boatpand/image-updater.git",
+        "targetRevision": "main"
+      },
+      "syncPolicy": {
+        "syncOptions": [
+          "ServerSideApply=true",
+          "Validate=true",
+          "RespectIgnoreDifferences=true",
+          "CreateNamespace=true",
+          "ApplyOutOfSyncOnly=true"
+        ]
+      }
+    },
+    "status": {
+      "controllerNamespace": "argo-cd",
+      "health": {
+        "lastTransitionTime": "2025-04-26T09:17:45Z",
+        "status": "Healthy"
+      },
+      "history": [
+        {
+          "deployStartedAt": "2025-04-26T05:41:58Z",
+          "deployedAt": "2025-04-26T05:42:02Z",
+          "id": 0,
+          "initiatedBy": {
+            "username": "admin"
+          },
+          "revision": "fdc044c35e6223584249c6371f83b9a2c681b830",
+          "source": {
+            "path": "nginx",
+            "repoURL": "git@github.com/boatpand/image-updater.git",
+            "targetRevision": "main"
+          }
+        },
+        {
+          "deployStartedAt": "2025-04-26T06:15:13Z",
+          "deployedAt": "2025-04-26T06:15:13Z",
+          "id": 1,
+          "initiatedBy": {
+            "automated": true
+          },
+          "revision": "fdc044c35e6223584249c6371f83b9a2c681b830",
+          "source": {
+            "kustomize": {
+              "images": [
+                "docker.io/boatpand/mynginx:v1.0.1"
+              ]
+            },
+            "path": "nginx",
+            "repoURL": "git@github.com/boatpand/image-updater.git",
+            "targetRevision": "main"
+          }
+        },
+        {
+          "deployStartedAt": "2025-04-26T06:27:19Z",
+          "deployedAt": "2025-04-26T06:27:19Z",
+          "id": 2,
+          "initiatedBy": {
+            "username": "admin"
+          },
+          "revision": "f518e1c19a09c719dfe29ac9dbdc9e5ee9b1c9e7",
+          "source": {
+            "kustomize": {
+              "images": [
+                "docker.io/boatpand/mynginx:v1.0.1"
+              ]
+            },
+            "path": "nginx",
+            "repoURL": "git@github.com/boatpand/image-updater.git",
+            "targetRevision": "main"
+          }
+        }
+      ],
+      "operationState": {
+        "finishedAt": "2025-04-26T06:27:19Z",
+        "message": "successfully synced (no more tasks)",
+        "operation": {
+          "initiatedBy": {
+            "username": "admin"
+          },
+          "retry": {},
+          "sync": {
+            "revision": "f518e1c19a09c719dfe29ac9dbdc9e5ee9b1c9e7",
+            "syncOptions": [
+              "ServerSideApply=true",
+              "Validate=true",
+              "RespectIgnoreDifferences=true",
+              "CreateNamespace=true",
+              "ApplyOutOfSyncOnly=true"
+            ],
+            "syncStrategy": {
+              "hook": {}
+            }
+          }
+        },
+        "phase": "Succeeded",
+        "startedAt": "2025-04-26T06:27:19Z",
+        "syncResult": {
+          "revision": "f518e1c19a09c719dfe29ac9dbdc9e5ee9b1c9e7",
+          "source": {
+            "kustomize": {
+              "images": [
+                "docker.io/boatpand/mynginx:v1.0.1"
+              ]
+            },
+            "path": "nginx",
+            "repoURL": "git@github.com/boatpand/image-updater.git",
+            "targetRevision": "main"
+          }
+        }
+      },
+      "reconciledAt": "2025-04-26T09:17:42Z",
+      "resources": [
+        {
+          "health": {
+            "status": "Healthy"
+          },
+          "kind": "Service",
+          "name": "nginx-svc",
+          "namespace": "default",
+          "status": "Synced",
+          "version": "v1"
+        },
+        {
+          "group": "apps",
+          "health": {
+            "status": "Healthy"
+          },
+          "kind": "Deployment",
+          "name": "nginx-deployment",
+          "namespace": "default",
+          "status": "OutOfSync",
+          "version": "v1"
+        }
+      ],
+      "sourceType": "Kustomize",
+      "summary": {
+        "images": [
+          "docker.io/boatpand/mynginx:v1.0.1"
+        ]
+      },
+      "sync": {
+        "comparedTo": {
+          "destination": {
+            "namespace": "default",
+            "server": "https://kubernetes.default.svc"
+          },
+          "ignoreDifferences": [
+            {
+              "group": "apps",
+              "jsonPointers": [
+                "/spec/replicas"
+              ],
+              "kind": "*"
+            }
+          ],
+          "source": {
+            "kustomize": {
+              "images": [
+                "docker.io/boatpand/mynginx:v1.0.2"
+              ]
+            },
+            "path": "nginx",
+            "repoURL": "git@github.com/boatpand/image-updater.git",
+            "targetRevision": "main"
+          }
+        },
+        "revision": "f518e1c19a09c719dfe29ac9dbdc9e5ee9b1c9e7",
+        "status": "OutOfSync"
+      }
+    }
+  }
