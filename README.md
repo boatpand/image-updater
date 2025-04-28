@@ -80,3 +80,5 @@ kubectl kustomize . --enable-helm | kubectl apply -f -
 cd argo/argo-crd
 kubectl kustomize . --enable-helm | kubectl apply -f -
 ```
+
+![Alt text](./teams-noti.png?raw=true "teams-noti")
