@@ -3,7 +3,7 @@
 Can read app-example.json for customize template of notification.
 
 ### must add secrets before apply
-* argo/argo-cd/container-registry-secrets.yaml.yaml
+* argo/argo-cd/container-registry-secrets.yaml
 * argo/argo-cd/argocd-notifications-secrets.yaml
 * argo/argo-crd/ssh-secrets.yaml
 * nginx/container-registry-secrets.yaml
