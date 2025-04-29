@@ -14,7 +14,7 @@ spec:
   source:
     repoURL: git@github.com/boatpand/image-updater.git
     path: nginx
-    targetRevision: main
+    targetRevision: dry-run-update
   syncPolicy:
     syncOptions:
       - ServerSideApply=true
