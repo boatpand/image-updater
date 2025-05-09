@@ -14,7 +14,7 @@ spec:
   project: nginx
   source:
     repoURL: git@github.com/boatpand/image-updater.git
-    path: nginx/overlays/app1
+    path: nginx/overlays/app-1
     targetRevision: semver-with-v
   syncPolicy:
     syncOptions:
