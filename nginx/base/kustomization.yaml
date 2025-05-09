@@ -1,0 +1,7 @@
+resources:
+  - deployment.yaml
+  - service.yaml
+
+images:
+- name: docker.io/boatpand/mynginx
+  newTag: v1.0.1

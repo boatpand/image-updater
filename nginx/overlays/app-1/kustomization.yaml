@@ -1,0 +1,10 @@
+namespace: default
+resources:
+  - ../../base
+
+patches:
+  - path: deployment.yaml
+
+images:
+- name: docker.io/boatpand/mynginx
+  newTag: v1.0.3
