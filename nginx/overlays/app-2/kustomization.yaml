@@ -5,6 +5,6 @@ resources:
 patches:
   - path: deployment.yaml
 
-images:
-- name: docker.io/boatpand/mynginx
-  newTag: v1.0.1
+# images:
+# - name: docker.io/boatpand/mynginx
+#   newTag: v1.0.1
