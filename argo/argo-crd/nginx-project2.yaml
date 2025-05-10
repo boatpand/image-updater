@@ -5,9 +5,9 @@ metadata:
   namespace: argo-cd
 spec:
   destinations:
-    - namespace: 'default'
+    - namespace: 'default2'
       server: 'https://kubernetes.default.svc'
   sourceNamespaces:
-    - default
+    - default2
   sourceRepos:
     - '*'

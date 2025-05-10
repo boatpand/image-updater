@@ -7,4 +7,4 @@ patches:
 
 images:
 - name: docker.io/boatpand/mynginx
-  newTag: v1.0.0
+  newTag: v1.0.1

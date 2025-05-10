@@ -15,7 +15,7 @@ spec:
   project: nginx2
   source:
     repoURL: git@github.com/boatpand/image-updater.git
-    path: nginx/overlays/app-1
+    path: nginx/overlays/app-2
     targetRevision: semver-with-v
   syncPolicy:
     syncOptions:
@@ -31,7 +31,7 @@ spec:
 
   destination:
     server: https://kubernetes.default.svc
-    namespace: default
+    namespace: default2
   ignoreDifferences:
     - group: apps
       kind: '*'
