@@ -1,0 +1,39 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx2
+  namespace: argo-cd
+  # annotations:
+  #   argocd-image-updater.argoproj.io/image-list: nginx=docker.io/boatpand/mynginx:1.0.x
+  #   argocd-image-updater.argoproj.io/nginx.update-strategy: semver
+  #   # argocd-image-updater.argoproj.io/dsa-system-v2-ls-staging.allow-tags: ^v1\.1\.\d+$
+  #   argocd-image-updater.argoproj.io/nginx.pull-secret: pullsecret:argo-cd/container-registry-secret
+  #   notifications.argoproj.io/subscribe.out-of-sync.teams: image-update-channel
+    
+    
+spec:
+  project: nginx2
+  source:
+    repoURL: git@github.com/boatpand/image-updater.git
+    path: nginx/overlays/app-1
+    targetRevision: semver-with-v
+  syncPolicy:
+    syncOptions:
+      - ServerSideApply=true
+      - Validate=true
+      - RespectIgnoreDifferences=true
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
+    automated: 
+      prune: false
+      selfHeal: false
+    # automated: null
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  ignoreDifferences:
+    - group: apps
+      kind: '*'
+      jsonPointers:
+        - /spec/replicas
