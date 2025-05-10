@@ -3,12 +3,12 @@ kind: Application
 metadata:
   name: nginx
   namespace: argo-cd
-  annotations:
-    argocd-image-updater.argoproj.io/image-list: nginx=docker.io/boatpand/mynginx:1.0.x
-    argocd-image-updater.argoproj.io/nginx.update-strategy: semver
-    # argocd-image-updater.argoproj.io/dsa-system-v2-ls-staging.allow-tags: ^v1\.1\.\d+$
-    argocd-image-updater.argoproj.io/nginx.pull-secret: pullsecret:argo-cd/container-registry-secret
-    notifications.argoproj.io/subscribe.out-of-sync.teams: image-update-channel
+  # annotations:
+  #   argocd-image-updater.argoproj.io/image-list: nginx=docker.io/boatpand/mynginx:1.0.x
+  #   argocd-image-updater.argoproj.io/nginx.update-strategy: semver
+  #   # argocd-image-updater.argoproj.io/dsa-system-v2-ls-staging.allow-tags: ^v1\.1\.\d+$
+  #   argocd-image-updater.argoproj.io/nginx.pull-secret: pullsecret:argo-cd/container-registry-secret
+  #   notifications.argoproj.io/subscribe.out-of-sync.teams: image-update-channel
     
 spec:
   project: nginx
