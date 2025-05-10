@@ -142,6 +142,35 @@ server:
       memory: 64Mi
 
 configs:
+  cm:
+    exec.enabled: true
+    url: 
+    users.anonymous.enabled: false
+    globalProjects: |-
+      - labelSelector:
+          matchExpressions:
+            - key: argocd.argoproj.io/project-permission
+              operator: In
+              values:
+                - privileged
+        projectName: privileged-project
+
+      - labelSelector:
+          matchExpressions:
+            - key: argocd.argoproj.io/project-permission
+              operator: In
+              values:
+                - argo-operator
+        projectName: argo-operator
+
+      - labelSelector:
+          matchExpressions:
+            - key: argocd.argoproj.io/project-permission
+              operator: DoesNotExist
+        projectName: normal-project
+
+    kustomize.buildOptions: --enable-helm
+    
   params:
     server.disable.auth: false
     server.insecure: true
